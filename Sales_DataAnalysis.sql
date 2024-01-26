@@ -1,9 +1,21 @@
 -- Created Database "SalesDataAnalysis"
--- Created and imported the data from the Csv file as Sales
+-- Created and imported the data from the Csv file as sales_data
 
 -- Select all data form the table
 select * from sales_data
 
--- Total Revenue
+-- Total Orders
 
-select * from sales_data
+select COUNT(Distinct ORDERNUMBER) from sales_data
+
+-- Total sales by country
+
+select country, sum(round (sales,2)), as Sales from sales_data
+group by country
+order by 2 desc
+
+-- Total sales by Product Code and QTY Sold
+
+select  PRODUCTCODE, sum(QUANTITYORDERED) AS 'Product Qty Ordered', sum(round (sales,2)) as Sales from sales_data
+group by PRODUCTCODE
+order by 2 desc
