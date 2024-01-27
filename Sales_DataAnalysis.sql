@@ -32,3 +32,13 @@ select  Distinct ORDERNUMBER, sum(round (sales,2)) as Sales, AVG(QUANTITYORDERED
 group by ORDERNUMBER
 order by 2 desc
 
+
+-- Sales by PRODUCTLINE
+select  PRODUCTLINE ,sum(round (sales,2)) as Sales from sales_data
+group by PRODUCTLINE
+order by 2 desc;
+ 
+-- order status
+select STATUS, count(Distinct ORDERNUMBER) AS Orders from sales_data
+group by STATUS
+order by 2 desc;
